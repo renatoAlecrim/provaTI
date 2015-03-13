@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="appDisciplina">
     <head>
         <title>ProvaNivelamento</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,6 +7,37 @@
         <script src="disciplina.js"></script>
     </head>
     <body>
-        <div></div>
+        <div ng-controler="DisciplinaController">
+            <div>
+                <p>ID <br><input type="text" ng-model="disciplina.id"/></p>
+                <p>Nome <br><input type="text" ng-model="disciplina.nome"/></p>
+                <p>Carga Horária <br><input type="text" ng-model="disciplina.cargaHoraria"/></p>
+                <p>Peso <br><input type="text" ng-model="disciplina.peso"/></p>
+                <button type="button" ng-click="salvar()">Salvar</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Carga Horária</th>
+                        <th>Peso</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="d in disciplinas">
+                        <td>{{d.id}}</td>
+                        <td>{{d.nome}}</td>
+                        <td>{{d.cargaHoraria}}</td>
+                        <td>{{d.peso}}</td>
+                        <td>
+                            <a href="#" ng-click="editar()">Editar</a>
+                            <a href="#" ng-click="excluir()">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>

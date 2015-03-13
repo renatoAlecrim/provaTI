@@ -22,7 +22,8 @@ public class DisciplinaController {
     @RequestMapping(method = RequestMethod.GET)
     public List<Disciplina> getDisciplinas(){
         List<Disciplina> disciplinas = null;
-        disciplinas = (List<Disciplina>) em.createQuery("select Disciplina d");
+        em.createQuery("select id, nome, cargaHoraria, peso from Disciplina");
+        
         return disciplinas;
     }
     
@@ -37,8 +38,8 @@ public class DisciplinaController {
         criarDisciplina(d);
     }
     
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void excluirDisciplina(@PathVariable Long id){
-        em.createQuery("delete Disciplina d where id="+id);
+        em.remove(em.createQuery("select id, nome, cargaHoraria, peso from Disciplina where id="+id));
     }
 }
