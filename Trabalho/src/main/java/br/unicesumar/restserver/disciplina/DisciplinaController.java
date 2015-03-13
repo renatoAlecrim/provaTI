@@ -1,5 +1,6 @@
 package br.unicesumar.restserver.disciplina;
 
+import java.security.interfaces.DSAKey;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -23,7 +24,6 @@ public class DisciplinaController {
     public List<Disciplina> getDisciplinas(){
         List<Disciplina> disciplinas = null;
         em.createQuery("select id, nome, cargaHoraria, peso from Disciplina");
-        
         return disciplinas;
     }
     
